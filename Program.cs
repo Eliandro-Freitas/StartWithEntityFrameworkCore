@@ -12,14 +12,14 @@ namespace DominandoEfCore
     public class Program
     {
         public readonly static ApplicationContext _context = new();
-        public readonly static IDepartamentoRepository _departamentoRepository = new DepartamentoRepository();
-        public readonly static List<Departamento> _departamentos = new();
+        public readonly static IDepartmentRepository _departamentoRepository = new DepartamentoRepository();
+        public readonly static List<Department> _departamentos = new();
         public readonly static int _count = 0;
 
         static void Main(string[] args)
         {
             var uow = new Uow();
-            var departamento = new Departamento 
+            var departamento = new Department 
             {
                 Id = Guid.NewGuid(),
                 Descricao = "Departamento 1",
@@ -36,7 +36,7 @@ namespace DominandoEfCore
             strategy.Execute(() =>
             {
                 using var transaction = _context.Database.BeginTransaction();
-                _context.Departamentos.Add(new Departamento
+                _context.Departamentos.Add(new Department
                 {
                     Id = Guid.NewGuid(),
                     Descricao = "Departamento 7",
@@ -52,7 +52,7 @@ namespace DominandoEfCore
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
 
-            var departamento = new Departamento
+            var departamento = new Department
             {
                 Descricao = "Propiedade Sombra"
             };
