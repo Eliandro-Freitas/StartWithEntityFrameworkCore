@@ -44,7 +44,7 @@ namespace DominandoEfCore.Infra
                 .HasDatabaseName("idx_descricao") // Nome do índice
                 .HasFilter("Descricao IS NOT NULL"); // Filtro do índice
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly); // Aplica os mapeamentos das classes
         }
     }
 }
